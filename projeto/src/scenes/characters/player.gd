@@ -47,17 +47,21 @@ func _input(event : InputEvent) -> void:
 	if Input.is_action_just_pressed("move_sprint") and not sprinting:
 		sprinting = true
 		current_speed = default_sprint_speed
+		steps.pitch_scale = 1.5
 	elif Input.is_action_just_released("move_sprint") and sprinting:
 		sprinting = false
 		current_speed = default_walk_speed
+		steps.pitch_scale = 1
 	
 	# Controle de esgueirar
 	if Input.is_action_just_pressed("move_sneak") and not sneaking:
 		sneaking = true
 		current_speed = default_sneak_speed
+		steps.pitch_scale = 0.75
 	elif Input.is_action_just_released("move_sneak") and sneaking:
 		sneaking = false
 		current_speed = default_sneak_speed
+		steps.pitch_scale = 1
 	pass
 
 func _physics_process(delta : float) -> void:
