@@ -42,6 +42,22 @@ func _input(event : InputEvent) -> void:
 		flashlight = !flashlight
 		light.visible = flashlight
 		flashlight_sfx.play()
+	
+	# Controle de corrida
+	if Input.is_action_just_pressed("move_sprint") and not sprinting:
+		sprinting = true
+		current_speed = default_sprint_speed
+	elif Input.is_action_just_released("move_sprint") and sprinting:
+		sprinting = false
+		current_speed = default_walk_speed
+	
+	# Controle de esgueirar
+	if Input.is_action_just_pressed("move_sneak") and not sneaking:
+		sneaking = true
+		current_speed = default_sneak_speed
+	elif Input.is_action_just_released("move_sneak") and sneaking:
+		sneaking = false
+		current_speed = default_sneak_speed
 	pass
 
 func _physics_process(delta : float) -> void:

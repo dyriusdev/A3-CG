@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://df1wpd3rxehk4"]
+
+[ext_resource type="Texture2D" uid="uid://cjpddhbbuwpod" path="res://assets/skybox/skybox.png" id="1_bgvmp"]
+[ext_resource type="Script" uid="uid://bakksrf4bsn77" path="res://src/scenes/start.gd" id="1_tio3v"]
+[ext_resource type="AudioStream" uid="uid://crugq6mkqi7w6" path="res://assets/sounds/menu.ogg" id="3_u576w"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tio3v"]
+panorama = ExtResource("1_bgvmp")
+
+[sub_resource type="Sky" id="Sky_rqu40"]
+sky_material = SubResource("PanoramaSkyMaterial_tio3v")
+
+[sub_resource type="Environment" id="Environment_u576w"]
+background_mode = 2
+sky = SubResource("Sky_rqu40")
+
+[node name="Start" type="CanvasLayer"]
+script = ExtResource("1_tio3v")
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Container" type="SubViewportContainer" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Background/Container"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Background/Container/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
+current = true
+
+[node name="Environment" type="WorldEnvironment" parent="Background"]
+environment = SubResource("Environment_u576w")
+
+[node name="Menu" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
+
+[node name="Container" type="VBoxContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="Menu/Container"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "Titulo"
+fit_content = true
+
+[node name="Space" type="MarginContainer" parent="Menu/Container"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+
+[node name="New" type="Button" parent="Menu/Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Novo jogo"
+flat = true
+
+[node name="Members" type="Button" parent="Menu/Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Membros"
+flat = true
+
+[node name="Exit" type="Button" parent="Menu/Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Sair"
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u576w")
+autoplay = true
+
+[connection signal="pressed" from="Menu/Container/New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="Menu/Container/Members" to="." method="_on_members_pressed"]
+[connection signal="pressed" from="Menu/Container/Exit" to="." method="_on_exit_pressed"]
