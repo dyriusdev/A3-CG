@@ -3,13 +3,9 @@
 [ext_resource type="Script" uid="uid://suy18c7sljns" path="res://src/scenes/characters/player.gd" id="1_182hf"]
 [ext_resource type="AudioStream" uid="uid://cvt2j122indla" path="res://assets/sounds/footsteps.mp3" id="2_2ul2v"]
 [ext_resource type="AudioStream" uid="uid://b1ehiwodcaiys" path="res://assets/sounds/flashlight_click.mp3" id="3_2elb6"]
+[ext_resource type="PackedScene" uid="uid://df07a0lcs4v7s" path="res://assets/models/flashlight.glb" id="4_tyf87"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_05qlf"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_2ul2v"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 0.5
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_182hf")
@@ -31,17 +27,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="Flashlight" type="Node3D" parent="Cam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -0.5)
 
-[node name="Mesh" type="MeshInstance3D" parent="Cam/Flashlight"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_2ul2v")
-
 [node name="Light" type="SpotLight3D" parent="Cam/Flashlight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.45)
 visible = false
 shadow_enabled = true
 spot_range = 8.0
-spot_angle = 19.9383
+spot_angle = 37.549
 
 [node name="Sfx" type="AudioStreamPlayer3D" parent="Cam/Flashlight"]
 stream = ExtResource("3_2elb6")
 volume_db = -16.0
+
+[node name="flashlight" parent="Cam/Flashlight" instance=ExtResource("4_tyf87")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
