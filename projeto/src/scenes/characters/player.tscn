@@ -35,3 +35,5 @@ volume_db = -16.0
 
 [node name="flashlight" parent="Cam/Flashlight" instance=ExtResource("4_tyf87")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]

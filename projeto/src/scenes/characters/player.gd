@@ -3,6 +3,10 @@ extends CharacterBody3D
 const FRICTION : float = 0.5
 const ACCELERATION : float = 0.25
 
+@onready var sfx_silence1 : AudioStreamOggVorbis = preload("res://assets/sounds/silence_01.ogg")
+@onready var sfx_silence2 : AudioStreamOggVorbis = preload("res://assets/sounds/silence_02.ogg")
+@onready var sfx_silence3 : AudioStreamOggVorbis = preload("res://assets/sounds/silence_03.ogg")
+
 @onready var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var cam : Camera3D = $Cam
 @onready var steps : AudioStreamPlayer3D = $Steps
