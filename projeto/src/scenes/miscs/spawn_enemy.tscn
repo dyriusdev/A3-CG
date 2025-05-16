@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc0wgmw2poovq"]
+
+[ext_resource type="Script" uid="uid://c8agrc65ugogd" path="res://src/scenes/miscs/spawn_enemy.gd" id="1_tcm25"]
+
+[node name="SpawnEnemy" type="Node3D"]
+script = ExtResource("1_tcm25")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_spawn_timeout"]

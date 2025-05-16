@@ -22,6 +22,7 @@ var sprinting : bool = false
 var sneaking : bool = false
 
 var flashlight : bool = false
+var collected_pages : int = 0
 
 func _ready() -> void:
 	current_speed = default_walk_speed
