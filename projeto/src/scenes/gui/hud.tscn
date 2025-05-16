@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://c0ovleau5txgs"]
+[gd_scene load_steps=2 format=3 uid="uid://c0ovleau5txgs"]
+
+[ext_resource type="Script" uid="uid://xkdx2vjyeukh" path="res://src/scenes/gui/hud.gd" id="1_g5iav"]
 
 [node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_g5iav")
+
+[node name="Pages" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
