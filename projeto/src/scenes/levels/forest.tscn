@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://1lqq113i5miy"]
+[gd_scene load_steps=10 format=3 uid="uid://1lqq113i5miy"]
 
 [ext_resource type="Texture2D" uid="uid://cjpddhbbuwpod" path="res://assets/skybox/skybox.png" id="1_ahm8l"]
+[ext_resource type="PackedScene" uid="uid://c0ovleau5txgs" path="res://src/scenes/gui/hud.tscn" id="1_tnd0y"]
 [ext_resource type="PackedScene" uid="uid://bc0wgmw2poovq" path="res://src/scenes/miscs/spawn_enemy.tscn" id="3_rqu40"]
 [ext_resource type="PackedScene" uid="uid://b8834f8k172ug" path="res://src/scenes/characters/player.tscn" id="7_tdf56"]
 
@@ -21,6 +22,8 @@ size = Vector2(50, 50)
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
 [node name="Forest" type="Node3D"]
+
+[node name="Hud" parent="." instance=ExtResource("1_tnd0y")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)

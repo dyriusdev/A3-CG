@@ -3,6 +3,7 @@ Singleton principal do jogo
 '''
 extends Node
 
+@warning_ignore("unused_signal")
 signal collected_page
 
 var mouse_sensitivity : float = 0.01
