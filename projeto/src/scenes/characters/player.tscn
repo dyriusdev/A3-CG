@@ -16,6 +16,7 @@ shape = SubResource("CapsuleShape3D_05qlf")
 
 [node name="Steps" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_2ul2v")
+volume_db = -32.0
 
 [node name="Cam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
