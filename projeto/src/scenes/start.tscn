@@ -1,18 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://df1wpd3rxehk4"]
+[gd_scene load_steps=4 format=3 uid="uid://df1wpd3rxehk4"]
 
-[ext_resource type="Texture2D" uid="uid://cjpddhbbuwpod" path="res://assets/skybox/skybox.png" id="1_bgvmp"]
 [ext_resource type="Script" uid="uid://bakksrf4bsn77" path="res://src/scenes/start.gd" id="1_tio3v"]
+[ext_resource type="Environment" uid="uid://dibclcjum5lbf" path="res://src/resources/enviroment.tres" id="2_u576w"]
 [ext_resource type="AudioStream" uid="uid://crugq6mkqi7w6" path="res://assets/sounds/menu.ogg" id="3_u576w"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tio3v"]
-panorama = ExtResource("1_bgvmp")
-
-[sub_resource type="Sky" id="Sky_rqu40"]
-sky_material = SubResource("PanoramaSkyMaterial_tio3v")
-
-[sub_resource type="Environment" id="Environment_u576w"]
-background_mode = 2
-sky = SubResource("Sky_rqu40")
 
 [node name="Start" type="CanvasLayer"]
 script = ExtResource("1_tio3v")
@@ -37,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 current = true
 
 [node name="Environment" type="WorldEnvironment" parent="Background"]
-environment = SubResource("Environment_u576w")
+environment = ExtResource("2_u576w")
 
 [node name="Menu" type="MarginContainer" parent="."]
 anchors_preset = 15
