@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcnpjtx4xmgiu"]
+
+[ext_resource type="Script" uid="uid://dkn44vmfmjpk3" path="res://src/scenes/miscs/world_generation.gd" id="1_bju22"]
+[ext_resource type="Script" uid="uid://b88rg2t2xm75o" path="res://src/scenes/miscs/world_mesh.gd" id="2_i1aia"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1aia"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_821ln"]
+material = SubResource("StandardMaterial3D_i1aia")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_821ln"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lyaqp"]
+material = SubResource("StandardMaterial3D_821ln")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyaqp"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y652e"]
+material = SubResource("StandardMaterial3D_lyaqp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y652e"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_17cxq"]
+material = SubResource("StandardMaterial3D_y652e")
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_i1aia"]
+item/0/name = "Room"
+item/0/mesh = SubResource("BoxMesh_821ln")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/mesh_cast_shadow = 1
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/1/name = "Hallway"
+item/1/mesh = SubResource("BoxMesh_lyaqp")
+item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/mesh_cast_shadow = 1
+item/1/shapes = []
+item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/navigation_layers = 1
+item/2/name = "Door"
+item/2/mesh = SubResource("BoxMesh_y652e")
+item/2/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/2/mesh_cast_shadow = 1
+item/2/shapes = []
+item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/2/navigation_layers = 1
+item/3/name = "Border"
+item/3/mesh = SubResource("BoxMesh_17cxq")
+item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/3/mesh_cast_shadow = 1
+item/3/shapes = []
+item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/3/navigation_layers = 1
+
+[node name="WorldGeneration" type="Node3D"]
+script = ExtResource("1_bju22")
+room_number = 9
+min_room_size = 5
+max_room_size = 11
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = SubResource("MeshLibrary_i1aia")
+cell_size = Vector3(1, 1, 1)
+
+[node name="WorldMesh" type="Node3D" parent="."]
+script = ExtResource("2_i1aia")
+grid_path = NodePath("../GridMap")
