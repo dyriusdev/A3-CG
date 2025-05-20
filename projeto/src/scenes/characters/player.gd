@@ -13,16 +13,15 @@ const ACCELERATION : float = 0.25
 @onready var light : SpotLight3D = $Cam/Flashlight/Light
 @onready var flashlight_sfx : AudioStreamPlayer3D = $Cam/Flashlight/Sfx
 
-@export var default_walk_speed : int = 5
-@export var default_sprint_speed : int = 8
-@export var default_sneak_speed : int = 3
+@export var default_walk_speed : float = 3
+@export var default_sprint_speed : float = 6
+@export var default_sneak_speed : float = 1
 
-var current_speed : int = 0
+var current_speed : float = 0
 var sprinting : bool = false
 var sneaking : bool = false
 
 var flashlight : bool = false
-var collected_pages : int = 0
 
 func _ready() -> void:
 	current_speed = default_walk_speed

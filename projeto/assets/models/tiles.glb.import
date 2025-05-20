@@ -34,20 +34,24 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:Corner_in": {
-"generate/navmesh": 1,
-"generate/physics": true
-},
-"PATH:Corner_out": {
-"generate/navmesh": 1,
+"PATH:Celling": {
 "generate/physics": true
 },
 "PATH:Floor": {
 "generate/navmesh": 1,
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Wall Down": {
 "generate/physics": true
 },
-"PATH:Wall": {
-"generate/navmesh": 1,
+"PATH:Wall Left": {
+"generate/physics": true
+},
+"PATH:Wall Right": {
+"generate/physics": true
+},
+"PATH:Wall Up": {
 "generate/physics": true
 }
 }

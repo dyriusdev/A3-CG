@@ -47,7 +47,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "Titulo"
+text = "Labirinto [color=darkred]Mortal[/color]"
 fit_content = true
 
 [node name="Space" type="MarginContainer" parent="Menu/Container"]
@@ -57,22 +57,59 @@ layout_mode = 2
 [node name="New" type="Button" parent="Menu/Container"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 16
-text = "Novo jogo"
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.331663, 0.0189092, 0.0188691, 1)
+theme_override_colors/font_pressed_color = Color(0.904256, 0.147995, 0.140361, 1)
+theme_override_font_sizes/font_size = 32
+text = "Iniciar"
 flat = true
 
 [node name="Members" type="Button" parent="Menu/Container"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 16
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.331663, 0.0189092, 0.0188691, 1)
+theme_override_colors/font_pressed_color = Color(0.904256, 0.147995, 0.140361, 1)
+theme_override_font_sizes/font_size = 32
 text = "Membros"
 flat = true
 
 [node name="Exit" type="Button" parent="Menu/Container"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 16
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.331663, 0.0189092, 0.0188691, 1)
+theme_override_colors/font_pressed_color = Color(0.904256, 0.147995, 0.140361, 1)
+theme_override_font_sizes/font_size = 32
 text = "Sair"
+flat = true
+
+[node name="Members" type="ColorRect" parent="Menu"]
+visible = false
+layout_mode = 2
+color = Color(0.0313726, 0.0313726, 0.0313726, 0.768627)
+
+[node name="Container" type="VBoxContainer" parent="Menu/Members"]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 560.0
+
+[node name="Names" type="RichTextLabel" parent="Menu/Members/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center][font_size=96][color=green]Membros[/color][/font_size][/center]
+
+[center][font_size=32]Richardson Dauzaker Lopes [/font_size][/center]"
+fit_content = true
+
+[node name="Back" type="Button" parent="Menu/Members/Container"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.331663, 0.0189092, 0.0188691, 1)
+theme_override_colors/font_pressed_color = Color(0.904256, 0.147995, 0.140361, 1)
+theme_override_font_sizes/font_size = 32
+text = "Voltar"
 flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -82,3 +119,4 @@ autoplay = true
 [connection signal="pressed" from="Menu/Container/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="Menu/Container/Members" to="." method="_on_members_pressed"]
 [connection signal="pressed" from="Menu/Container/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Menu/Members/Container/Back" to="." method="_on_back_pressed"]
