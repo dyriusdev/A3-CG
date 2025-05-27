@@ -86,7 +86,7 @@ func _on_collected() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		end.show()
 	
-	pages.text = "Collected : %s/%s" % [Globals.keys, Globals.to_collect]
+	pages.text = "Coletado : %s/%s" % [Globals.keys, Globals.to_collect]
 	pass
 
 func _on_back_pressed() -> void:
