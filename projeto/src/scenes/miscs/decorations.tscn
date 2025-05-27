@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://darh7b3lgwmil"]
+[gd_scene load_steps=8 format=3 uid="uid://darh7b3lgwmil"]
 
 [ext_resource type="Script" uid="uid://hyivldbsn5gj" path="res://src/scenes/miscs/decorations.gd" id="1_tl76c"]
 [ext_resource type="PackedScene" uid="uid://crvw2ukbpdrj1" path="res://assets/models/Lãmpada.glb" id="2_aa742"]
+[ext_resource type="PackedScene" uid="uid://cwbky1l2hn8b4" path="res://assets/models/Braço_Ossudo.glb" id="3_udfyd"]
+[ext_resource type="PackedScene" uid="uid://captpcxl6opih" path="res://assets/models/Skull_Final.glb" id="4_o5rnk"]
+[ext_resource type="PackedScene" uid="uid://i1vdu2ibpciq" path="res://assets/models/Costelas.glb" id="5_o2pmn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o2pmn"]
+radius = 0.05
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_udfyd"]
+radius = 0.2
+height = 0.6
 
 [node name="Decorations" type="Node3D"]
 script = ExtResource("1_tl76c")
@@ -15,3 +26,35 @@ light_color = Color(1, 1, 0.44, 1)
 shadow_enabled = true
 
 [node name="Objetos" type="Node3D" parent="."]
+
+[node name="Braço" type="RigidBody3D" parent="Objetos"]
+mass = 0.3
+can_sleep = false
+
+[node name="Braço_Ossudo" parent="Objetos/Braço" instance=ExtResource("3_udfyd")]
+transform = Transform3D(-6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 0, 0, 0, 0.15, -0.1, 0, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Objetos/Braço"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_o2pmn")
+
+[node name="Skull" type="RigidBody3D" parent="Objetos"]
+mass = 0.3
+can_sleep = false
+
+[node name="Skull_Final" parent="Objetos/Skull" instance=ExtResource("4_o5rnk")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.025, 0, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Objetos/Skull"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_udfyd")
+
+[node name="Costelas" type="RigidBody3D" parent="Objetos"]
+mass = 0.3
+can_sleep = false
+
+[node name="Costelas" parent="Objetos/Costelas" instance=ExtResource("5_o2pmn")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Objetos/Costelas"]
+shape = SubResource("CapsuleShape3D_udfyd")

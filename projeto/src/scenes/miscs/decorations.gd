@@ -10,8 +10,9 @@ func set_light() -> void:
 func set_random_deco() -> void:
 	lamp.free()
 	
-	#var objeto : Node3D = objetos.get_children().pick_random()
-	#for child in objetos.get_children():
-	#	if child != objeto:
-	#		child.free()
+	var objeto : RigidBody3D = objetos.get_children().pick_random()
+	for child in objetos.get_children():
+		if child != objeto:
+			child.free()
+	objeto.quaternion = Quaternion.from_euler(Vector3(0, randf_range(0, 360), 0))
 	pass

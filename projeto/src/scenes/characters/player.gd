@@ -12,6 +12,7 @@ const ACCELERATION : float = 0.25
 @onready var steps : AudioStreamPlayer3D = $Steps
 @onready var light : SpotLight3D = $Cam/Flashlight/Light
 @onready var flashlight_sfx : AudioStreamPlayer3D = $Cam/Flashlight/Sfx
+@onready var ray : RayCast3D = $Cam/RayCast3D
 
 @export var default_walk_speed : float = 3
 @export var default_sprint_speed : float = 6
@@ -75,6 +76,11 @@ func _process(_delta : float) -> void:
 		sprinting = false
 		current_speed = default_sneak_speed
 		steps.pitch_scale = 1
+	
+	if ray.is_colliding():
+		var collider = ray.get_collider()
+		if collider.is_in_group("monstro"):
+			Globals.seeing_monster.emit(true)
 	pass
 
 func _physics_process(delta : float) -> void:
@@ -92,6 +98,8 @@ func _physics_process(delta : float) -> void:
 		steps.play()
 	elif axis.length() == 0 and steps.playing:
 		steps.stop()
+	
+	Globals.apply_objects_impulse(self)
 	pass
 
 func set_flashlight() -> void:

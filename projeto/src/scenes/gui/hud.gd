@@ -45,13 +45,14 @@ func _process(_delta : float) -> void:
 func _on_gameover() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().paused = true
+	suspense.stop()
 	over.show()
 	pass
 
 func _on_see(flag : bool) -> void:
 	vhs.visible = flag
 	if flag:
-		seeing_timer.start(0.5)
+		seeing_timer.start(0.75)
 	else:
 		seeing_timer.stop()
 	pass
@@ -67,7 +68,7 @@ func _on_seein_timeout() -> void:
 	
 	vhs.set_instance_shader_parameter("samples", samples)
 	vhs.set_instance_shader_parameter("filter_intensity", intensity)
-	seeing_timer.start(1)
+	seeing_timer.start(0.75)
 	pass
 
 func _on_collected() -> void:

@@ -38,11 +38,6 @@ func _on_life_time_timeout() -> void:
 	call_deferred("queue_free")
 	pass
 
-
-func _on_visible_on_screen_screen_entered() -> void:
-	Globals.seeing_monster.emit(true)
-	pass
-
 func _on_visible_on_screen_screen_exited() -> void:
 	Globals.seeing_monster.emit(false)
 	pass
