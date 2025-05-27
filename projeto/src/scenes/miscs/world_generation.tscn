@@ -64,7 +64,8 @@ max_room_size = 11
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = SubResource("MeshLibrary_i1aia")
-cell_size = Vector3(1, 1, 1)
+cell_size = Vector3(1, 2, 1)
+cell_octant_size = 1
 
 [node name="WorldMesh" type="Node3D" parent="."]
 script = ExtResource("2_i1aia")

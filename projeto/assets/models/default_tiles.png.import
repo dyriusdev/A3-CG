@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0csokwlpqvqw"
-path.s3tc="res://.godot/imported/tiles_tiles.png-cbe5c1294aacf1539a7983b24e1210f6.s3tc.ctex"
+path.s3tc="res://.godot/imported/default_tiles.png-6adf0ffa177ee73455349fc13a7ee4f1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/tiles_tiles.png"
-dest_files=["res://.godot/imported/tiles_tiles.png-cbe5c1294aacf1539a7983b24e1210f6.s3tc.ctex"]
+source_file="res://assets/models/default_tiles.png"
+dest_files=["res://.godot/imported/default_tiles.png-6adf0ffa177ee73455349fc13a7ee4f1.s3tc.ctex"]
 
 [params]
 

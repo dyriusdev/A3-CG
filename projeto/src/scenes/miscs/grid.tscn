@@ -1,15 +1,19 @@
-[gd_scene load_steps=24 format=4 uid="uid://2nobj7r2jxkw"]
+[gd_scene load_steps=39 format=4 uid="uid://2nobj7r2jxkw"]
 
-[ext_resource type="Texture2D" uid="uid://d0csokwlpqvqw" path="res://assets/models/tiles_tiles.png" id="1_hea78"]
 [ext_resource type="Script" uid="uid://mj5efopyro5q" path="res://src/scenes/miscs/grid.gd" id="1_wj2np"]
-[ext_resource type="Texture2D" uid="uid://d20pxxtvdix50" path="res://assets/models/tiles_tiles_normal.png" id="2_wj2np"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4vow"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wj2np"]
+load_path = "res://.godot/imported/default_tiles.png-6adf0ffa177ee73455349fc13a7ee4f1.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xtynj"]
+load_path = "res://.godot/imported/default_normal.png-9b1c76c5cf44cdac24bd4aaaabc8b406.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gjgs"]
 resource_name = "Tiles"
 cull_mode = 2
-albedo_texture = ExtResource("1_hea78")
+albedo_texture = SubResource("CompressedTexture2D_wj2np")
 normal_enabled = true
-normal_texture = ExtResource("2_wj2np")
+normal_texture = SubResource("CompressedTexture2D_xtynj")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_aid5d"]
@@ -34,7 +38,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_n4vow"),
+"material": SubResource("StandardMaterial3D_4gjgs"),
 "name": "Tiles",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -44,14 +48,28 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_aid5d")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wj2np"]
-size = Vector3(2, 2, 2)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jq187"]
+data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_aqg62"]
 vertices = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, 1)
 polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(0, 3, 1), PackedInt32Array(3, 4, 1), PackedInt32Array(3, 5, 4), PackedInt32Array(5, 6, 4), PackedInt32Array(5, 7, 6), PackedInt32Array(7, 2, 6), PackedInt32Array(7, 0, 2), PackedInt32Array(3, 7, 5), PackedInt32Array(3, 0, 7), PackedInt32Array(4, 2, 1), PackedInt32Array(4, 6, 2)]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_aqg62"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4gjgs"]
+load_path = "res://.godot/imported/default_tiles.png-6adf0ffa177ee73455349fc13a7ee4f1.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2twl5"]
+load_path = "res://.godot/imported/default_normal.png-9b1c76c5cf44cdac24bd4aaaabc8b406.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2twl5"]
+resource_name = "Tiles"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_4gjgs")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_2twl5")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e4tuj"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -65,15 +83,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_e4tuj"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_m76ca"]
 resource_name = "tiles_Cube_001"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
-"attribute_data": PackedByteArray("AAAAAP9//3//fwAAAAD/f/9/AAAAAP9/AAAAAP9//38AAP9//38AAP9//38AAAAAAAD/f/9/AAD/f/9/AAAAAAAA/3//fwAA/3//fwAAAAD/fwAAAAD/fwAAAAD/f/9/"),
+"attribute_data": PackedByteArray("mTkAAGZG/39mRgAAmTn/f/9/AAAAAP9/AAAAAP9//3+ZOf9/ZkYAAGZG/3+ZOQAAAAD/f/9/AAD/f/9/AAAAAAAA/3//fwAA/3//fwAAAAD/fwAAAAD/fwAAAAD/f/9/"),
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_n4vow"),
+"material": SubResource("StandardMaterial3D_2twl5"),
 "name": "Tiles",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -81,12 +99,26 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP//qioAAP//AACqKgAA/////6oqAAAAAAAAqioAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP+/AAD//////78AAP//AAD/v/////////+/VNVU1VTVVNVU1VTVVNVU1f8//7//P/+//z//v/8//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_aqg62")
+shadow_mesh = SubResource("ArrayMesh_e4tuj")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m76ca"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fuhit"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_fuhit"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4en4b"]
+load_path = "res://.godot/imported/default_tiles.png-6adf0ffa177ee73455349fc13a7ee4f1.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bb3uy"]
+load_path = "res://.godot/imported/default_normal.png-9b1c76c5cf44cdac24bd4aaaabc8b406.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtynj"]
+resource_name = "Tiles"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_4en4b")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_bb3uy")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_njudr"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -100,15 +132,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_njudr"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_nopbv"]
 resource_name = "tiles_Cube_002"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
-"attribute_data": PackedByteArray("AAAAAP9//3//fwAAAAD/f/9/AAAAAP9/AAAAAP9//38AAP9//38AAP9//38AAAAAAAD/f/9/AAD/f/9/AAAAAAAA/3//fwAA/3//fwAAAAD/fwAAAAD/fwAAAAD/f/9/"),
+"attribute_data": PackedByteArray("mTkAAGZG/39mRgAAmTn/f/9/AAAAAP9/AAAAAP9//3+ZOf9/ZkYAAGZG/3+ZOQAAAAD/f/9/AAD/f/9/AAAAAAAA/3//fwAA/3//fwAAAAD/fwAAAAD/fwAAAAD/f/9/"),
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_n4vow"),
+"material": SubResource("StandardMaterial3D_xtynj"),
 "name": "Tiles",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -116,12 +148,26 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP//qioAAP//AACqKgAA/////6oqAAAAAAAAqioAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP+/AAD//////78AAP//AAD/v/////////+/VNVU1VTVVNVU1VTVVNVU1f8//7//P/+//z//v/8//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_fuhit")
+shadow_mesh = SubResource("ArrayMesh_njudr")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nopbv"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rrp2h"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rrp2h"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iri3i"]
+load_path = "res://.godot/imported/default_tiles.png-6adf0ffa177ee73455349fc13a7ee4f1.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2vqjn"]
+load_path = "res://.godot/imported/default_normal.png-9b1c76c5cf44cdac24bd4aaaabc8b406.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wj2np"]
+resource_name = "Tiles"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_iri3i")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_2vqjn")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mqo4p"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -135,15 +181,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_mqo4p"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_uppgb"]
 resource_name = "tiles_Cube_003"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
-"attribute_data": PackedByteArray("AAAAAP9//3//fwAAAAD/f/9/AAAAAP9/AAAAAP9//38AAP9//38AAP9//38AAAAAAAD/f/9/AAD/f/9/AAAAAAAA/3//fwAA/3//fwAAAAD/fwAAAAD/fwAAAAD/f/9/"),
+"attribute_data": PackedByteArray("mTkAAGZG/39mRgAAmTn/f/9/AAAAAP9/AAAAAP9//3+ZOf9/ZkYAAGZG/3+ZOQAAAAD/f/9/AAD/f/9/AAAAAAAA/3//fwAA/3//fwAAAAD/fwAAAAD/fwAAAAD/f/9/"),
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_n4vow"),
+"material": SubResource("StandardMaterial3D_wj2np"),
 "name": "Tiles",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -151,12 +197,26 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP//qioAAP//AACqKgAA/////6oqAAAAAAAAqioAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP+/AAD//////78AAP//AAD/v/////////+/VNVU1VTVVNVU1VTVVNVU1f8//7//P/+//z//v/8//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_rrp2h")
+shadow_mesh = SubResource("ArrayMesh_mqo4p")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uppgb"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_70xiq"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_70xiq"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_333st"]
+load_path = "res://.godot/imported/default_tiles.png-6adf0ffa177ee73455349fc13a7ee4f1.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kc4j7"]
+load_path = "res://.godot/imported/default_normal.png-9b1c76c5cf44cdac24bd4aaaabc8b406.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hea78"]
+resource_name = "Tiles"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_333st")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_kc4j7")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j6gny"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -170,15 +230,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_j6gny"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_yhlfw"]
 resource_name = "tiles_Cube_004"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
-"attribute_data": PackedByteArray("AAAAAP9//3//fwAAAAD/f/9/AAAAAP9/AAAAAP9//38AAP9//38AAP9//38AAAAAAAD/f/9/AAD/f/9/AAAAAAAA/3//fwAA/3//fwAAAAD/fwAAAAD/fwAAAAD/f/9/"),
+"attribute_data": PackedByteArray("mTkAAGZG/39mRgAAmTn/f/9/AAAAAP9/AAAAAP9//3+ZOf9/ZkYAAGZG/3+ZOQAAAAD/f/9/AAD/f/9/AAAAAAAA/3//fwAA/3//fwAAAAD/fwAAAAD/fwAAAAD/f/9/"),
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_n4vow"),
+"material": SubResource("StandardMaterial3D_hea78"),
 "name": "Tiles",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -186,12 +246,26 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP//qioAAP//AACqKgAA/////6oqAAAAAAAAqioAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP+/AAD//////78AAP//AAD/v/////////+/VNVU1VTVVNVU1VTVVNVU1f8//7//P/+//z//v/8//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_70xiq")
+shadow_mesh = SubResource("ArrayMesh_j6gny")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yhlfw"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vuqtm"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_vuqtm"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_83ght"]
+load_path = "res://.godot/imported/default_tiles.png-6adf0ffa177ee73455349fc13a7ee4f1.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hea78"]
+load_path = "res://.godot/imported/default_normal.png-9b1c76c5cf44cdac24bd4aaaabc8b406.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83ght"]
+resource_name = "Tiles"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_83ght")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_hea78")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_shyf4"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -205,7 +279,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_shyf4"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_6yhpw"]
 resource_name = "tiles_Cube_005"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -213,7 +287,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_n4vow"),
+"material": SubResource("StandardMaterial3D_83ght"),
 "name": "Tiles",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -221,9 +295,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP//qioAAP//AACqKgAA/////6oqAAAAAAAAqioAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP+/AAD//////78AAP//AAD/v/////////+/VNVU1VTVVNVU1VTVVNVU1f8//7//P/+//z//v/8//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vuqtm")
+shadow_mesh = SubResource("ArrayMesh_shyf4")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6yhpw"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qfwdf"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
 
 [node name="Grid" type="Node3D"]
@@ -237,58 +311,57 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
-shape = SubResource("BoxShape3D_wj2np")
+shape = SubResource("ConcavePolygonShape3D_jq187")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_aqg62")
 
 [node name="Wall Down" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -1.00023, 0, 0.05, -4.37214e-08, 0, 1.05, 0.45)
-mesh = SubResource("ArrayMesh_e4tuj")
+transform = Transform3D(0.5, 0, 0, 0, 0, -1, 0, 0.05, 0, 0, 1.05, 0.45)
+mesh = SubResource("ArrayMesh_m76ca")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall Down"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall Down/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_m76ca")
+shape = SubResource("ConcavePolygonShape3D_fuhit")
 
 [node name="Wall Up" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-09, -1.00023, 0, 0.05, -4.37214e-08, 0, 1.05, -0.45)
-mesh = SubResource("ArrayMesh_njudr")
+transform = Transform3D(0.5, 0, 0, 0, 0, -1, 0, 0.05, 0, 0, 1.05, -0.45)
+mesh = SubResource("ArrayMesh_nopbv")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall Up"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall Up/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_nopbv")
+shape = SubResource("ConcavePolygonShape3D_rrp2h")
 
 [node name="Wall Right" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.7749e-08, 0.05, -4.37214e-08, 0, -2.18557e-09, -1.00023, -0.5, 3.7749e-09, -3.30088e-15, 0.45, 1.05, 0)
-mesh = SubResource("ArrayMesh_mqo4p")
+transform = Transform3D(5.96046e-08, 0.05, 1.19209e-07, 0, 5.96047e-09, -1, -0.5, 5.96047e-09, 1.42109e-14, 0.45, 1.05, 0)
+mesh = SubResource("ArrayMesh_uppgb")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall Right"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall Right/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_uppgb")
+shape = SubResource("ConcavePolygonShape3D_70xiq")
 
 [node name="Wall Left" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.7749e-08, 0.05, -4.37214e-08, 0, -2.18557e-09, -1.00023, -0.5, 3.7749e-09, -3.30088e-15, -0.45, 1.05, 0)
-mesh = SubResource("ArrayMesh_j6gny")
+transform = Transform3D(5.96046e-08, 0.05, 1.19209e-07, 0, 5.96047e-09, -1, -0.5, 5.96047e-09, 1.42109e-14, -0.45, 1.05, 0)
+mesh = SubResource("ArrayMesh_yhlfw")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall Left"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall Left/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_yhlfw")
+shape = SubResource("ConcavePolygonShape3D_vuqtm")
 
 [node name="Celling" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.05, 0, 0, 0, 0.5, 0, 2.1, 0)
-mesh = SubResource("ArrayMesh_shyf4")
+mesh = SubResource("ArrayMesh_6yhpw")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Celling"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Celling/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_6yhpw")
+shape = SubResource("ConcavePolygonShape3D_qfwdf")

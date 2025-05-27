@@ -83,9 +83,7 @@ func generate() -> void:
 	
 	make_hallway(hallway_graph)
 	
-	
-	
-	world_mesh.create_dungeon()
+	world_mesh.create_dungeon(randi_range(0, 3))
 	world_ready.emit()
 	pass
 
@@ -157,6 +155,7 @@ func make_room(recursion : int) -> void:
 	
 	var avg_x : float = start_position.x + (float(width) / 2)
 	var avg_z : float = start_position.z + (float(height) / 2)
-	var center_pos : Vector3 = Vector3(avg_x, 0, avg_z)
+	@warning_ignore("narrowing_conversion")
+	var center_pos : Vector3i = Vector3i(avg_x, 0, avg_z)
 	room_positions.append(center_pos)
 	pass

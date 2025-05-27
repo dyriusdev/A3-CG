@@ -16,13 +16,18 @@ shape = SubResource("CapsuleShape3D_jsmgd")
 
 [node name="LifeTime" type="Timer" parent="."]
 
+[node name="VisibleOnScreen" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+aabb = AABB(-0.4, -1, -0.4, 0.75, 2, 0.75)
+
 [node name="NavigationAgent" type="NavigationAgent3D" parent="."]
 simplify_path = true
 simplify_epsilon = 2.0
-debug_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_yakyh")
 
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreen" to="." method="_on_visible_on_screen_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreen" to="." method="_on_visible_on_screen_screen_exited"]

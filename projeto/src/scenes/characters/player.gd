@@ -16,7 +16,9 @@ const ACCELERATION : float = 0.25
 @export var default_walk_speed : float = 3
 @export var default_sprint_speed : float = 6
 @export var default_sneak_speed : float = 1
+@export var max_stamina : float = 100
 
+var current_stamina : float = 0
 var current_speed : float = 0
 var sprinting : bool = false
 var sneaking : bool = false
@@ -25,16 +27,12 @@ var flashlight : bool = false
 
 func _ready() -> void:
 	current_speed = default_walk_speed
+	current_stamina = max_stamina
+	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pass
 
 func _input(event : InputEvent) -> void:
-	# Para remover no final
-	if Input.is_key_pressed(KEY_ESCAPE):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 	# Rotação do jogador e da camera
 	if is_instance_of(event, InputEventMouseMotion) and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * Globals.mouse_sensitivity)
@@ -44,8 +42,7 @@ func _input(event : InputEvent) -> void:
 	# Controle da lanterna
 	if event.is_action_pressed("act_flashlight"):
 		flashlight = !flashlight
-		light.visible = flashlight
-		flashlight_sfx.play()
+		set_flashlight()
 	
 	# Controle de corrida
 	if Input.is_action_just_pressed("move_sprint") and not sprinting:
@@ -68,10 +65,24 @@ func _input(event : InputEvent) -> void:
 		steps.pitch_scale = 1
 	pass
 
+func _process(_delta : float) -> void:
+	if current_stamina > 0 and sprinting:
+		current_stamina -= 0.25
+	elif current_stamina < max_stamina and not sprinting:
+		current_stamina += 0.25
+	
+	if current_stamina <= 0:
+		sprinting = false
+		current_speed = default_sneak_speed
+		steps.pitch_scale = 1
+	pass
+
 func _physics_process(delta : float) -> void:
 	# Aplica a gravidade caso não esteja no chão
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		if velocity.y <= -5:
+			get_tree().reload_current_scene()
 	
 	var axis : Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	move(axis)
@@ -81,6 +92,11 @@ func _physics_process(delta : float) -> void:
 		steps.play()
 	elif axis.length() == 0 and steps.playing:
 		steps.stop()
+	pass
+
+func set_flashlight() -> void:
+	light.visible = flashlight
+	flashlight_sfx.play()
 	pass
 
 # Função que implementa movimentação 3d

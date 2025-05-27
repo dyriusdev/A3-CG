@@ -5,23 +5,25 @@ const DIRECTIONS : Dictionary = {
 	"left" : Vector3i.LEFT, "right" : Vector3i.RIGHT
 }
 const GRID : PackedScene = preload("res://src/scenes/miscs/grid.tscn")
+const DECORATIONS = preload("res://src/scenes/miscs/decorations.tscn")
+const CELL_SIZE : float = 0.5
 
 @export var grid_path : NodePath = ""
 @onready var grid_map : GridMap = get_node(grid_path)
 
-func create_dungeon() -> void:
+func create_dungeon(texture : int) -> void:
 	for c in get_children():
 		remove_child(c)
 		c.queue_free()
 	
 	for cell in grid_map.get_used_cells():
 		var cell_index : int = grid_map.get_cell_item(cell)
+		var cell_pos : Vector3 = Vector3(cell) + Vector3(CELL_SIZE, 0, CELL_SIZE)
 		if cell_index <= 2 and cell_index >= 0:
 			var dungeon_cell = GRID.instantiate()
 			add_child(dungeon_cell)
 			dungeon_cell.set_owner(owner)
-			dungeon_cell.global_position = Vector3(cell) + Vector3(0.5, 1, 0.5)
-			
+			dungeon_cell.global_position = cell_pos
 			for i in 4:
 				var cell_n : Vector3i = cell + DIRECTIONS.values()[i]
 				var cell_n_index : int = grid_map.get_cell_item(cell_n)
@@ -30,6 +32,28 @@ func create_dungeon() -> void:
 				else:
 					var key : String = str(cell_index) + str(cell_n_index)
 					call("handle_" + key, dungeon_cell, DIRECTIONS.keys()[i])
+			dungeon_cell.call("update_texture", texture)
+		
+		if get_parent().room_positions.has(cell):
+			var deco = DECORATIONS.instantiate()
+			add_child(deco)
+			deco.set_owner(owner)
+			deco.global_position = Vector3(cell) + Vector3(CELL_SIZE, 2, CELL_SIZE)
+			deco.set_light()
+		
+		for tiles in get_parent().room_tiles:
+			randomize()
+			var random : int = randi_range(1, tiles.size() / 2)
+			if random < tiles.size() / 2:
+				continue
+			
+			if tiles.has(cell):
+				var deco = DECORATIONS.instantiate()
+				add_child(deco)
+				deco.set_owner(owner)
+				deco.global_position = Vector3(cell) + Vector3(0.5, 1, 0.5)
+				deco.set_random_deco()
+	
 	grid_map.clear()
 	pass
 

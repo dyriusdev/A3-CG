@@ -34,5 +34,15 @@ func _physics_process(delta : float) -> void:
 # Após o tempo de vida acabar a entidade precisa ser removida
 func _on_life_time_timeout() -> void:
 	enemy_died.emit()
+	Globals.seeing_monster.emit(false)
 	call_deferred("queue_free")
+	pass
+
+
+func _on_visible_on_screen_screen_entered() -> void:
+	Globals.seeing_monster.emit(true)
+	pass
+
+func _on_visible_on_screen_screen_exited() -> void:
+	Globals.seeing_monster.emit(false)
 	pass

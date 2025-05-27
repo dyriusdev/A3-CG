@@ -12,6 +12,8 @@ var player_instance : CharacterBody3D = null
 func _ready() -> void:
 	world_generation.world_ready.connect(setup)
 	world_generation.generate()
+	
+	Globals.collected_keys.emit()
 	pass
 
 # Pega a posição central de umas das salas do mapa

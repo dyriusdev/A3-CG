@@ -1,8 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://df1wpd3rxehk4"]
+[gd_scene load_steps=6 format=3 uid="uid://df1wpd3rxehk4"]
 
 [ext_resource type="Script" uid="uid://bakksrf4bsn77" path="res://src/scenes/start.gd" id="1_tio3v"]
 [ext_resource type="Environment" uid="uid://dibclcjum5lbf" path="res://src/resources/enviroment.tres" id="2_u576w"]
+[ext_resource type="PackedScene" uid="uid://dcnpjtx4xmgiu" path="res://src/scenes/miscs/world_generation.tscn" id="3_sfyg4"]
 [ext_resource type="AudioStream" uid="uid://crugq6mkqi7w6" path="res://assets/sounds/menu.ogg" id="3_u576w"]
+
+[sub_resource type="FontFile" id="FontFile_sfyg4"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/96/0/ascent = 0.0
+cache/0/96/0/descent = 0.0
+cache/0/96/0/underline_position = 0.0
+cache/0/96/0/underline_thickness = 0.0
+cache/0/96/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
 
 [node name="Start" type="CanvasLayer"]
 script = ExtResource("1_tio3v")
@@ -23,11 +41,21 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Background/Container/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 current = true
+
+[node name="Light" type="SpotLight3D" parent="Background/Container/SubViewport/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.45)
+light_color = Color(1, 0.976471, 0.741176, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 0.1
+spot_range = 8.0
+spot_angle_attenuation = 3.0
 
 [node name="Environment" type="WorldEnvironment" parent="Background"]
 environment = ExtResource("2_u576w")
+
+[node name="WorldGeneration" parent="Background" instance=ExtResource("3_sfyg4")]
+custom_seed = "menu"
 
 [node name="Menu" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -97,10 +125,15 @@ offset_bottom = 560.0
 [node name="Names" type="RichTextLabel" parent="Menu/Members/Container"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = SubResource("FontFile_sfyg4")
 bbcode_enabled = true
 text = "[center][font_size=96][color=green]Membros[/color][/font_size][/center]
 
-[center][font_size=32]Richardson Dauzaker Lopes [/font_size][/center]"
+[center][font_size=32]Richardson Dauzaker Lopes - 12823131973[/font_size][/center]
+[center][font_size=32]Arthur Rodrigues Cortêz Machado - 12823128097[/font_size][/center]
+[center][font_size=32]Maria Julya Correia de Oliveira - 12823127841[/font_size][/center]
+[center][font_size=32]Manuel Carlos Nascimento de Azevedo - 12823138338[/font_size][/center]
+[center][font_size=32]Mateus Emanoel Soares Montenegro - 12823213410[/font_size][/center]"
 fit_content = true
 
 [node name="Back" type="Button" parent="Menu/Members/Container"]
@@ -114,6 +147,7 @@ flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_u576w")
+volume_db = -20.0
 autoplay = true
 
 [connection signal="pressed" from="Menu/Container/New" to="." method="_on_new_pressed"]

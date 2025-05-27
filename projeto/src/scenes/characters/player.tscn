@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8834f8k172ug"]
+[gd_scene load_steps=7 format=3 uid="uid://b8834f8k172ug"]
 
 [ext_resource type="Script" uid="uid://suy18c7sljns" path="res://src/scenes/characters/player.gd" id="1_182hf"]
 [ext_resource type="AudioStream" uid="uid://cvt2j122indla" path="res://assets/sounds/footsteps.mp3" id="2_2ul2v"]
 [ext_resource type="AudioStream" uid="uid://b1ehiwodcaiys" path="res://assets/sounds/flashlight_click.mp3" id="3_2elb6"]
 [ext_resource type="PackedScene" uid="uid://df07a0lcs4v7s" path="res://assets/models/flashlight.glb" id="4_tyf87"]
+[ext_resource type="PackedScene" uid="uid://c0ovleau5txgs" path="res://src/scenes/gui/hud.tscn" id="5_0xash"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_05qlf"]
 
@@ -42,3 +43,6 @@ volume_db = -16.0
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Sfx" type="AudioStreamPlayer" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("5_0xash")]
+player_path = NodePath("..")

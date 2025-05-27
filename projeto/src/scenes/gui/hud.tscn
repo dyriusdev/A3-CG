@@ -1,8 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0ovleau5txgs"]
+[gd_scene load_steps=9 format=3 uid="uid://c0ovleau5txgs"]
 
 [ext_resource type="Script" uid="uid://xkdx2vjyeukh" path="res://src/scenes/gui/hud.gd" id="1_g5iav"]
+[ext_resource type="Shader" uid="uid://b6fph5d0khiis" path="res://src/shaders/vhs.gdshader" id="2_x52yh"]
+[ext_resource type="AudioStream" uid="uid://iwqblw7oss0r" path="res://assets/sounds/silence_01.ogg" id="3_fvcyd"]
+[ext_resource type="Texture2D" uid="uid://cdkc2l0bbos8j" path="res://assets/textures/battery-0.png" id="4_ql06w"]
+[ext_resource type="Texture2D" uid="uid://bku20ie7g7w8t" path="res://assets/textures/battery-100.png" id="5_qm2bk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x52yh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x52yh"]
+noise = SubResource("FastNoiseLite_x52yh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fvcyd"]
+shader = ExtResource("2_x52yh")
+shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.0
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.1
+shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_x52yh")
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_g5iav")
@@ -11,7 +35,7 @@ script = ExtResource("1_g5iav")
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Control" type="ColorRect" parent="."]
+[node name="Vhs" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_fvcyd")
 anchors_preset = 15
@@ -20,3 +44,118 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Stamina" type="ProgressBar" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 320.0
+grow_vertical = 0
+
+[node name="Battery" type="TextureProgressBar" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 96.0
+grow_horizontal = 0
+step = 0.01
+value = 10.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("4_ql06w")
+texture_progress = ExtResource("5_qm2bk")
+
+[node name="SeeingTimer" type="Timer" parent="."]
+
+[node name="BatteryTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="Suspense" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fvcyd")
+volume_db = -10.0
+
+[node name="Over" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.103744, 0.103744, 0.103744, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Over"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "Fim de jogo"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="Over"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 480.0
+offset_right = 802.0
+offset_bottom = 544.0
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.331663, 0.0189092, 0.0188691, 1)
+theme_override_colors/font_pressed_color = Color(0.904256, 0.147995, 0.140361, 1)
+theme_override_font_sizes/font_size = 32
+text = "Voltar para tela inicial"
+flat = true
+
+[node name="End" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.103744, 0.103744, 0.103744, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="End"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "Escapou"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="End"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 480.0
+offset_right = 802.0
+offset_bottom = 544.0
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.331663, 0.0189092, 0.0188691, 1)
+theme_override_colors/font_pressed_color = Color(0.904256, 0.147995, 0.140361, 1)
+theme_override_font_sizes/font_size = 32
+text = "Voltar para tela inicial"
+flat = true
+
+[connection signal="pressed" from="Over/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="End/Back" to="." method="_on_back_pressed"]

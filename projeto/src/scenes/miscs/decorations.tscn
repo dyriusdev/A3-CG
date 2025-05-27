@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://darh7b3lgwmil"]
+
+[ext_resource type="Script" uid="uid://hyivldbsn5gj" path="res://src/scenes/miscs/decorations.gd" id="1_tl76c"]
+[ext_resource type="PackedScene" uid="uid://crvw2ukbpdrj1" path="res://assets/models/Lãmpada.glb" id="2_aa742"]
+
+[node name="Decorations" type="Node3D"]
+script = ExtResource("1_tl76c")
+
+[node name="Lãmpada" parent="." instance=ExtResource("2_aa742")]
+transform = Transform3D(-0.1, -8.74228e-09, 0, 8.74228e-09, -0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Light" type="OmniLight3D" parent="Lãmpada"]
+transform = Transform3D(10, 1.13687e-13, 0, -1.13687e-13, 10, 0, 0, 0, 10, -2.62268e-07, 3, 0)
+light_color = Color(1, 1, 0.44, 1)
+shadow_enabled = true
+
+[node name="Objetos" type="Node3D" parent="."]

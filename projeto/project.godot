@@ -31,6 +31,10 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="Projeto"
 
+[global_group]
+
+monstro=""
+
 [gui]
 
 theme/custom_font="uid://kp14ygtburoh"
