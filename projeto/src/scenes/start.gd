@@ -5,6 +5,8 @@ extends CanvasLayer
 @onready var camera_3d: Camera3D = $Background/Container/SubViewport/Camera3D
 
 func _ready() -> void:
+	get_tree().paused = false
+	
 	world_generation.world_ready.connect(setup)
 	world_generation.generate()
 	pass

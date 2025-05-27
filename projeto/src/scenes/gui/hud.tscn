@@ -13,7 +13,7 @@ noise = SubResource("FastNoiseLite_x52yh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fvcyd"]
 shader = ExtResource("2_x52yh")
-shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/vhs_resolution = Vector2(1280, 720)
 shader_parameter/samples = 2
 shader_parameter/crease_noise = 1.0
 shader_parameter/crease_opacity = 0.5
@@ -29,6 +29,7 @@ shader_parameter/noise_intensity = 0.1
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_x52yh")
 
 [node name="Hud" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_g5iav")
 
 [node name="Pages" type="Label" parent="."]
@@ -70,10 +71,6 @@ texture_under = ExtResource("4_ql06w")
 texture_progress = ExtResource("5_qm2bk")
 
 [node name="SeeingTimer" type="Timer" parent="."]
-
-[node name="BatteryTimer" type="Timer" parent="."]
-wait_time = 0.25
-autostart = true
 
 [node name="Suspense" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_fvcyd")
@@ -157,5 +154,6 @@ theme_override_font_sizes/font_size = 32
 text = "Voltar para tela inicial"
 flat = true
 
+[connection signal="timeout" from="SeeingTimer" to="." method="_on_seein_timeout"]
 [connection signal="pressed" from="Over/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="End/Back" to="." method="_on_back_pressed"]

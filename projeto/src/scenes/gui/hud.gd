@@ -6,16 +6,15 @@ extends CanvasLayer
 @onready var vhs : ColorRect = $Vhs
 @onready var suspense : AudioStreamPlayer = $Suspense
 @onready var battery : TextureProgressBar = $Battery
-@onready var battery_timer : Timer = $BatteryTimer
 @onready var over : ColorRect = $Over
 @onready var end : ColorRect = $End
 
 @export_node_path("CharacterBody3D") var player_path : NodePath = ""
 
 var player = null
-
-var current_battery : int = 100
-var tolerance : int = 1
+var current_battery : float = 100
+var samples : int = 4
+var intensity : float = 0.1
 
 func _ready() -> void:
 	player = get_node(player_path)
@@ -26,31 +25,27 @@ func _ready() -> void:
 	stamina.max_value = player.max_stamina
 	stamina.value = player.current_stamina
 	
-	seeing_timer.timeout.connect(_on_seein_timeout)
-	battery_timer.timeout.connect(_on_battery_timeout)
 	Globals.game_over.connect(_on_gameover)
 	pass
 
 func _process(_delta : float) -> void:
 	stamina.value = player.current_stamina
 	
-	if current_battery <= 0:
+	if player.flashlight and current_battery > 0:
+		current_battery -= 0.25
+	elif player.flashlight and current_battery <= 0:
 		player.flashlight = false
 		player.set_flashlight()
-	pass
-
-func _on_gameover() -> void:
-	over.show()
-	pass
-
-func _on_battery_timeout():
-	if player.flashlight:
-		current_battery -= 0.01
-	else:
+	elif not player.flashlight and current_battery < 100:
 		current_battery += 1
 	
 	battery.value = current_battery
-	battery_timer.start()
+	pass
+
+func _on_gameover() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().paused = true
+	over.show()
 	pass
 
 func _on_see(flag : bool) -> void:
@@ -64,11 +59,15 @@ func _on_see(flag : bool) -> void:
 func _on_seein_timeout() -> void:
 	vhs.visible = true
 	
-	if tolerance < 24:
-		tolerance += 8
+	if samples < 24:
+		samples += 8
+		intensity += 0.2
+	else:
+		_on_gameover()
 	
-	vhs.set_instance_shader_parameter("samples", tolerance)
-	seeing_timer.start(0.5)
+	vhs.set_instance_shader_parameter("samples", samples)
+	vhs.set_instance_shader_parameter("filter_intensity", intensity)
+	seeing_timer.start(1)
 	pass
 
 func _on_collected() -> void:
@@ -84,6 +83,7 @@ func _on_collected() -> void:
 	
 	if Globals.to_collect == 0:
 		suspense.stop()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		end.show()
 	
 	pages.text = "Collected : %s/%s" % [Globals.keys, Globals.to_collect]
