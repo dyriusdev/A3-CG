@@ -13,9 +13,7 @@ signal seeing_monster(flag : bool)
 var mouse_sensitivity : float = 0.01
 
 var keys : int = 0
-var to_collect : int = 8
-
-var danger_factor : float = 0.1
+var to_collect : int = 3
 
 # Aplicar impulso ao colidir com objetos do tipo rigbody
 func apply_objects_impulse(body : CharacterBody3D) -> void:

@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwbf5vpo3n3dj"]
 
 [ext_resource type="Script" uid="uid://bfys7vi0g2pe4" path="res://src/scenes/characters/monster.gd" id="1_yakyh"]
+[ext_resource type="PackedScene" uid="uid://t7y68y8ekk73" path="res://assets/models/slendermanFINAL.glb" id="2_t1qra"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jsmgd"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_yakyh"]
-
 [node name="Monster" type="CharacterBody3D" groups=["monstro"]]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+transform = Transform3D(9.83506e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, 9.83506e-08, 0, 0, 0)
 script = ExtResource("1_yakyh")
+speed = 5
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -21,12 +21,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 aabb = AABB(-0.4, -1, -0.4, 0.75, 2, 0.75)
 
 [node name="NavigationAgent" type="NavigationAgent3D" parent="."]
-simplify_path = true
-simplify_epsilon = 2.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_yakyh")
+[node name="slendermanFINAL" parent="." instance=ExtResource("2_t1qra")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="slendermanFINAL/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.139702, 9.74505e-05, 0.000689362, 0.990193)
+bones/1/rotation = Quaternion(0.0526057, 0.0166542, -0.00586922, 0.998459)
+bones/3/rotation = Quaternion(0.12913, 0.111069, 0.857186, -0.486027)
+bones/4/rotation = Quaternion(-0.25741, -0.0305814, -0.302532, 0.917213)
+bones/5/rotation = Quaternion(0.0318089, -0.054833, 0.0215577, 0.997756)
+bones/8/rotation = Quaternion(-0.237399, 0.208594, 0.27207, 0.908905)
+bones/9/rotation = Quaternion(0.0318089, 0.054833, -0.0215577, 0.997756)
+bones/11/rotation = Quaternion(0.690449, 0.158347, 0.687508, -0.15981)
+bones/12/rotation = Quaternion(-0.213499, -0.000322147, 0.0044538, 0.976933)
+bones/13/rotation = Quaternion(-0.0223249, 0.00590423, 0.00737979, 0.999706)
+bones/15/rotation = Quaternion(0.690449, -0.158347, -0.687508, -0.15981)
+bones/16/rotation = Quaternion(-0.213499, 0.000322147, -0.0044538, 0.976933)
+bones/17/rotation = Quaternion(-0.0223249, -0.00590423, -0.00737979, 0.999706)
 
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreen" to="." method="_on_visible_on_screen_screen_exited"]
+
+[editable path="slendermanFINAL"]

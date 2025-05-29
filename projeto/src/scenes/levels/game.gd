@@ -2,6 +2,7 @@ extends Node3D
 
 const PLAYER = preload("res://src/scenes/characters/player.tscn")
 const MONSTER : PackedScene = preload("res://src/scenes/characters/monster.tscn")
+const CHAVE = preload("res://src/scenes/miscs/chave.tscn")
 
 @onready var world_generation : Node3D = $WorldGeneration
 @onready var enemy_spawn_timer : Timer = $EnemySpawnTimer
@@ -13,7 +14,12 @@ func _ready() -> void:
 	world_generation.world_ready.connect(setup)
 	world_generation.generate()
 	
-	Globals.collected_keys.emit()
+	# Geração das chaves
+	for i in range(Globals.to_collect):
+		var instance = CHAVE.instantiate()
+		instance.name = "chave %s" % i 
+		add_child(instance)
+		instance.global_position = get_random_spawn_point()
 	pass
 
 # Pega a posição central de umas das salas do mapa

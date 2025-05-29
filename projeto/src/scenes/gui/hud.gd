@@ -29,6 +29,8 @@ func _ready() -> void:
 	pass
 
 func _process(_delta : float) -> void:
+	pages.text = "Coletado : %s/%s" % [Globals.keys, Globals.to_collect]
+	
 	stamina.value = player.current_stamina
 	
 	if player.flashlight and current_battery > 0:
@@ -75,7 +77,7 @@ func _on_collected() -> void:
 	Globals.keys += 1
 	Globals.to_collect -= 1
 	
-	if Globals.keys < Globals.to_collect / 2.0:
+	if Globals.keys < 2:
 		suspense.stream = preload("res://assets/sounds/silence_02.ogg")
 		suspense.play()
 	else:
@@ -86,8 +88,6 @@ func _on_collected() -> void:
 		suspense.stop()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		end.show()
-	
-	pages.text = "Coletado : %s/%s" % [Globals.keys, Globals.to_collect]
 	pass
 
 func _on_back_pressed() -> void:

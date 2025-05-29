@@ -34,6 +34,7 @@ project/assembly_name="Projeto"
 [global_group]
 
 monstro=""
+chave=""
 
 [gui]
 

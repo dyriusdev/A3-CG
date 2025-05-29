@@ -13,6 +13,7 @@ const ACCELERATION : float = 0.25
 @onready var light : SpotLight3D = $Cam/Flashlight/Light
 @onready var flashlight_sfx : AudioStreamPlayer3D = $Cam/Flashlight/Sfx
 @onready var ray : RayCast3D = $Cam/RayCast3D
+@onready var animation_player: AnimationPlayer = $jaymerrickRIGGING_BACKUP/AnimationPlayer
 
 @export var default_walk_speed : float = 3
 @export var default_sprint_speed : float = 6
@@ -64,6 +65,13 @@ func _input(event : InputEvent) -> void:
 		sneaking = false
 		current_speed = default_sneak_speed
 		steps.pitch_scale = 1
+	
+	# Interação para pegar chave
+	if event.is_action_pressed("act_interact") and event.is_pressed() and ray.is_colliding():
+		var collider = ray.get_collider()
+		if is_instance_valid(collider) and collider.is_in_group("chave"):
+				Globals.collected_keys.emit()
+				collider.call_deferred("queue_free")
 	pass
 
 func _process(_delta : float) -> void:
@@ -79,8 +87,8 @@ func _process(_delta : float) -> void:
 	
 	if ray.is_colliding():
 		var collider = ray.get_collider()
-		if collider.is_in_group("monstro"):
-			Globals.seeing_monster.emit(true)
+		if is_instance_valid(collider) and collider.is_in_group("monstro"):
+				Globals.seeing_monster.emit(true)
 	pass
 
 func _physics_process(delta : float) -> void:
@@ -92,6 +100,12 @@ func _physics_process(delta : float) -> void:
 	
 	var axis : Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	move(axis)
+	
+	# Controle de animações
+	if axis.length() > 0:
+		animation_player.play("Walk")
+	else:
+		animation_player.play("Idle")
 	
 	# Controle do som de passos
 	if axis.length() > 0 and not steps.playing:

@@ -7,6 +7,8 @@ const ACCELERATION : float = 0.25
 @onready var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var life_time : Timer = $LifeTime
 @onready var navigation_agent : NavigationAgent3D = $NavigationAgent
+@onready var animation_player : AnimationPlayer = $slendermanFINAL/AnimationPlayer
+@onready var slenderman_final : Node3D = $slendermanFINAL
 
 @export var speed : int = 3
 
@@ -21,14 +23,19 @@ func _physics_process(delta : float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
+	var direction : Vector3 = Vector3.ZERO
 	if player:
-		var direction : Vector3 = Vector3.ZERO
 		
 		navigation_agent.target_position = player.global_position
 		direction = (navigation_agent.get_next_path_position() - global_position).normalized()
-		
+		look_at(player.global_position)
 		velocity = velocity.lerp(direction * speed, ACCELERATION * delta)
 		move_and_slide()
+	
+	if direction.length() > 0:
+		animation_player.play("Walk")
+	else:
+		animation_player.play("Idle")
 	pass
 
 # Após o tempo de vida acabar a entidade precisa ser removida
