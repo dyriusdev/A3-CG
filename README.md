@@ -8,4 +8,4 @@
 > ([slendermanFINAL](https://github.com/dyriusdev/A3-CG/blob/main/blender/slendermanFINAL.blend), [jaymerrickRIGGING_BACKUP](https://github.com/dyriusdev/A3-CG/blob/main/blender/jaymerrickRIGGING_BACKUP.blend)) : Maria Julya Correia de Oliveira<br>
 > ([flashlight](https://github.com/dyriusdev/A3-CG/blob/main/blender/flashlight.blend), [tiles](https://github.com/dyriusdev/A3-CG/blob/main/blender/tiles.blend)) : Richardson Dauzaker Lopes<br>
 > ([key](https://github.com/dyriusdev/A3-CG/blob/main/blender/key.blend), [chains02](https://github.com/dyriusdev/A3-CG/blob/main/blender/chains02.blend)) : Arthur Rodrigues Cortêz Machado<br>
->
+> ([Balde](https://github.com/dyriusdev/A3-CG/blob/main/blender/Balde.blend), [Barril](https://github.com/dyriusdev/A3-CG/blob/main/blender/Barrilchaves.blend)) : Manuel Carlos Nascimento de Azevedo<br>
