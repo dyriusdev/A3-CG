@@ -10,8 +10,8 @@ const ACCELERATION : float = 0.25
 @onready var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var cam : Camera3D = $Cam
 @onready var steps : AudioStreamPlayer3D = $Steps
-@onready var light : SpotLight3D = $Cam/Flashlight/Light
-@onready var flashlight_sfx : AudioStreamPlayer3D = $Cam/Flashlight/Sfx
+@onready var light : SpotLight3D = $Flashlight/Light
+@onready var flashlight_sfx : AudioStreamPlayer3D = $Flashlight/Sfx
 @onready var ray : RayCast3D = $Cam/RayCast3D
 @onready var animation_player: AnimationPlayer = $jaymerrickRIGGING_BACKUP/AnimationPlayer
 

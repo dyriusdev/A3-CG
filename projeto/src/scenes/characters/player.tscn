@@ -29,10 +29,13 @@ volume_db = -16.0
 [node name="Cam" type="Camera3D" parent="."]
 transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, 0, 1.13333, -0.4)
 
-[node name="Flashlight" type="Node3D" parent="Cam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -0.5)
+[node name="RayCast3D" type="RayCast3D" parent="Cam"]
+target_position = Vector3(0, 0, -10)
 
-[node name="Light" type="SpotLight3D" parent="Cam/Flashlight"]
+[node name="Flashlight" type="Node3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0.3, 0.867, -0.467)
+
+[node name="Light" type="SpotLight3D" parent="Flashlight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.45)
 visible = false
 light_color = Color(1, 0.976471, 0.741176, 1)
@@ -41,22 +44,20 @@ light_volumetric_fog_energy = 0.1
 spot_range = 8.0
 spot_angle_attenuation = 3.0
 
-[node name="Sfx" type="AudioStreamPlayer3D" parent="Cam/Flashlight"]
+[node name="Sfx" type="AudioStreamPlayer3D" parent="Flashlight"]
 stream = ExtResource("3_2elb6")
 volume_db = -16.0
 
-[node name="flashlight" parent="Cam/Flashlight" instance=ExtResource("4_tyf87")]
+[node name="flashlight" parent="Flashlight" instance=ExtResource("4_tyf87")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="RayCast3D" type="RayCast3D" parent="Cam"]
-target_position = Vector3(0, 0, -10)
 
 [node name="jaymerrickRIGGING_BACKUP" parent="." instance=ExtResource("6_wmokw")]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, 0)
 
 [node name="Skeleton3D" parent="jaymerrickRIGGING_BACKUP/Armature" index="0"]
-bones/4/rotation = Quaternion(0.696161, -0.00167909, -0.00112645, 0.717883)
-bones/7/rotation = Quaternion(-0.500651, 0.477528, -0.486283, 0.533708)
+bones/4/rotation = Quaternion(0.935551, 0.348167, 0.00911895, 0.0586657)
+bones/5/rotation = Quaternion(0.0487457, 0.0183395, -0.307208, 0.950216)
+bones/7/rotation = Quaternion(-0.729687, 0.0235426, -0.681139, 0.0552558)
 bones/11/rotation = Quaternion(-0.37478, -2.80528e-08, 1.7284e-08, 0.927114)
 bones/12/rotation = Quaternion(-0.0168955, 0.000192479, -0.0237257, 0.999576)
 bones/14/rotation = Quaternion(0.0540459, -0.37478, 0.925537, -0.000193976)
