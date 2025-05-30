@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://gwqirgrygfy4"
+path.s3tc="res://.godot/imported/Caixote_Wood 1 - 128x128_normal.png-05417c6317e86da328c4ee41893c4429.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "1cd5dbbb18a6ddff5cd8f4b2eddf214b"
+}
+
+[deps]
+
+source_file="res://assets/models/Caixote_Wood 1 - 128x128_normal.png"
+dest_files=["res://.godot/imported/Caixote_Wood 1 - 128x128_normal.png-05417c6317e86da328c4ee41893c4429.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://assets/models/Caixote_Wood 1 - 128x128_normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://darh7b3lgwmil"]
+[gd_scene load_steps=21 format=4 uid="uid://darh7b3lgwmil"]
 
 [ext_resource type="Script" uid="uid://hyivldbsn5gj" path="res://src/scenes/miscs/decorations.gd" id="1_tl76c"]
 [ext_resource type="PackedScene" uid="uid://crvw2ukbpdrj1" path="res://assets/models/Lãmpada.glb" id="2_aa742"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://i1vdu2ibpciq" path="res://assets/models/Costelas.glb" id="5_o2pmn"]
 [ext_resource type="Texture2D" uid="uid://b6bfo7wcctyqn" path="res://assets/models/Balde_madeira.jpg" id="6_cigli"]
 [ext_resource type="PackedScene" uid="uid://d4histcpg7bla" path="res://assets/models/Barrilchaves.glb" id="7_0hb1s"]
+[ext_resource type="PackedScene" uid="uid://dobxh42ywkn0" path="res://assets/models/Caixote.glb" id="8_7ucyh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o2pmn"]
 radius = 0.05
@@ -101,6 +102,9 @@ radius = 0.15
 height = 0.9
 radius = 0.25
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ndsmp"]
+size = Vector3(0.5, 0.5, 0.5)
+
 [node name="Decorations" type="Node3D"]
 script = ExtResource("1_tl76c")
 
@@ -157,9 +161,19 @@ skeleton = NodePath("")
 shape = SubResource("CylinderShape3D_cigli")
 
 [node name="Barril" type="RigidBody3D" parent="Objetos"]
+mass = 2.0
 
 [node name="Barrilchaves" parent="Objetos/Barril" instance=ExtResource("7_0hb1s")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objetos/Barril"]
 shape = SubResource("CylinderShape3D_7ucyh")
+
+[node name="Caixote" type="RigidBody3D" parent="Objetos"]
+mass = 2.0
+
+[node name="Caixote" parent="Objetos/Caixote" instance=ExtResource("8_7ucyh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objetos/Caixote"]
+shape = SubResource("BoxShape3D_ndsmp")
