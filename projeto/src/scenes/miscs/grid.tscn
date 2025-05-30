@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=4 uid="uid://2nobj7r2jxkw"]
+[gd_scene load_steps=40 format=4 uid="uid://2nobj7r2jxkw"]
 
 [ext_resource type="Script" uid="uid://mj5efopyro5q" path="res://src/scenes/miscs/grid.gd" id="1_wj2np"]
+[ext_resource type="PackedScene" uid="uid://dq4u8hkk1jgoe" path="res://assets/models/chains04.glb" id="2_hea78"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wj2np"]
 load_path = "res://.godot/imported/default_tiles.png-6adf0ffa177ee73455349fc13a7ee4f1.s3tc.ctex"
@@ -365,3 +366,15 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Celling/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qfwdf")
+
+[node name="ChainLeft" parent="." instance=ExtResource("2_hea78")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, -0.325, 1.4, 0)
+
+[node name="ChainRight" parent="." instance=ExtResource("2_hea78")]
+transform = Transform3D(-0.025, 0, -2.18557e-09, 0, 0.025, 0, 2.18557e-09, 0, -0.025, 0.325, 1.4, 0)
+
+[node name="ChainUp" parent="." instance=ExtResource("2_hea78")]
+transform = Transform3D(3.27835e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, 3.27835e-09, 0, 1.4, -0.325)
+
+[node name="ChainDown" parent="." instance=ExtResource("2_hea78")]
+transform = Transform3D(-1.09278e-09, 0, 0.025, 0, 0.025, 0, -0.025, 0, -1.09278e-09, 0, 1.4, 0.325)

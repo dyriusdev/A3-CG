@@ -57,41 +57,58 @@ func create_dungeon(texture : int) -> void:
 	grid_map.clear()
 	pass
 
-func handle_none(_cell : Node3D, _direction : String) -> void:
+func handle_none(cell : Node3D, direction : String) -> void:
+	randomize()
+	var chance : int = randi_range(1, 4)
+	if chance <= 2:
+		handle_chains(cell, direction)
+	pass
+
+func handle_chains(cell : Node3D, direction : String) -> void:
+	cell.call("remove_chain_" + direction)
 	pass
 
 func handle_00(cell : Node3D, direction : String) -> void:
 	cell.call("remove_wall_" + direction)
+	handle_chains(cell, direction)
 	pass
 
 func handle_01(cell : Node3D, direction : String) -> void:
 	cell.call("remove_wall_" + direction)
+	handle_chains(cell, direction)
 	pass
 
 func handle_02(cell : Node3D, direction : String) -> void:
 	cell.call("remove_wall_" + direction)
+	handle_chains(cell, direction)
 	pass
 
 func handle_10(cell : Node3D, direction : String) -> void:
 	cell.call("remove_wall_" + direction)
+	handle_chains(cell, direction)
 	pass
 
 func handle_11(cell : Node3D, direction : String) -> void:
 	cell.call("remove_wall_" + direction)
+	handle_chains(cell, direction)
 	pass
 
 func handle_12(cell : Node3D, direction : String) -> void:
 	cell.call("remove_wall_" + direction)
+	handle_chains(cell, direction)
 	pass
 
 func handle_20(cell : Node3D, direction : String) -> void:
 	cell.call("remove_wall_" + direction)
+	handle_chains(cell, direction)
 	pass
 
 func handle_21(cell : Node3D, direction : String) -> void:
 	cell.call("remove_wall_" + direction)
+	handle_chains(cell, direction)
 	pass
 
 func handle_22(cell : Node3D, direction : String) -> void:
 	cell.call("remove_wall_" + direction)
+	handle_chains(cell, direction)
 	pass

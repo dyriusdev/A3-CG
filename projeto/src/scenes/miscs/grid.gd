@@ -14,6 +14,9 @@ const TILES_13_NORMAL = preload("res://assets/models/tiles_13_normal.png")
 
 func update_texture(id : int) -> void:
 	for mesh in get_children():
+		if mesh is not MeshInstance3D:
+			continue
+		
 		var material : StandardMaterial3D = mesh.get_active_material(0).duplicate()
 		match id:
 			0:
@@ -34,15 +37,25 @@ func update_texture(id : int) -> void:
 func remove_wall_down() -> void:
 	$"Wall Down".free()
 	pass
-
 func remove_wall_up() -> void:
 	$"Wall Up".free()
 	pass
-
 func remove_wall_left() -> void:
 	$"Wall Left".free()
 	pass
-
 func remove_wall_right() -> void:
 	$"Wall Right".free()
+	pass
+
+func remove_chain_down() -> void:
+	$ChainDown.free()
+	pass
+func remove_chain_up() -> void:
+	$"ChainUp".free()
+	pass
+func remove_chain_left() -> void:
+	$"ChainLeft".free()
+	pass
+func remove_chain_right() -> void:
+	$"ChainRight".free()
 	pass
